@@ -32,6 +32,8 @@ dependencies:
   #agregamos la dependencia de swiper para los swipes. Se puede quitar la parte de ^1.1.6 y descargará la última versión
   flutter_swiper: ^1.1.6
 
+  #agregando http para utilizarlo con las APIs
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:

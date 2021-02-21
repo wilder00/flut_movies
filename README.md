@@ -46,6 +46,12 @@ Para importarlo
 import 'package:flutter_swiper/flutter_swiper.dart';
 ```
 
+### http
+Se tiene que registrar en el yaml e importar. más info [aquí](https://pub.dev/packages/http#-installing-tab-)
+
+
+
+
 
 ---
 ## Eztensiones de VSCode
@@ -53,3 +59,11 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 ### Paste Json as code
 (https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype)[https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype]
 
+
+---
+
+### consejos recibido
+
+> "Usa un archivo de configuraciones
+> Sea un .env y usar dotenv en Flutter
+> O un archivo settings.dart"
