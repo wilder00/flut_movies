@@ -29,6 +29,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
+  #agregamos la dependencia de swiper para los swipes. Se puede quitar la parte de ^1.1.6 y descargará la última versión
+  flutter_swiper: ^1.1.6
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
