@@ -3,22 +3,34 @@ import 'package:peliculas/src/models/pelicula_model.dart';
 
 class MovieHorizontal extends StatelessWidget {
   final List<Pelicula> peliculas;
+  final Function siguientePagina;
 
-  MovieHorizontal({@required this.peliculas});
+  MovieHorizontal({@required this.peliculas, @required this.siguientePagina});
+
+  //creando un controlador para el Widget PAgeView.
+  final _pageController = new PageController(
+    initialPage: 1,
+    viewportFraction: 0.3,
+  );
 
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
+
+    //agregando un escucha evento y dispare el callback cada vez que reacciones el listener (cuando se mueva el scroll)
+    _pageController.addListener(() {
+      if (_pageController.position.pixels >=
+          _pageController.position.maxScrollExtent - 200) {
+        siguientePagina();
+      }
+    });
 
     return Container(
       height: _screenSize.height * 0.25,
       child: PageView(
         //con el pageSnapping hacemos que el card no regrese a su posicion si no pasa el swap minimo que le da sensación de magneto
         pageSnapping: false,
-        controller: PageController(
-          initialPage: 1,
-          viewportFraction: 0.3,
-        ),
+        controller: _pageController,
         children: _tarjetas(context),
       ),
     );
