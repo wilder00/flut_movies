@@ -1,6 +1,6 @@
 class Peliculas {
   List<Pelicula> items = new List();
-
+  //es solo un constructor
   Peliculas();
   //le ponemos List<dynamic> para evitar que se rompa la app con el json
   Peliculas.fromJsonList(List<dynamic> jsonList) {
@@ -63,5 +63,12 @@ class Pelicula {
     adult = json['adult'];
     overview = json['overview'];
     releaseDate = json['release_date'];
+  }
+
+  getPosterImg() {
+    if (posterPath == null) {
+      return 'https://i0.wp.com/www.techjunkie.com/wp-content/uploads/2018/08/How-to-fix-the-Lenovo-webcam-not-working-issue1.jpg';
+    }
+    return 'https://image.tmdb.org/t/p/w500$posterPath';
   }
 }
