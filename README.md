@@ -15,8 +15,15 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+---
+## Widgets
 
-## paketes
+### ClipRRect
+Lo utilizamos para crear bordes redondeados (se usa como un container)
+
+
+---
+## packetes
 
 ### flutter_Swiper
 
@@ -38,3 +45,11 @@ Para importarlo
 ```
 import 'package:flutter_swiper/flutter_swiper.dart';
 ```
+
+
+---
+## Eztensiones de VSCode
+
+### Paste Json as code
+(https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype)[https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype]
+
