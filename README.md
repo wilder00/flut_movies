@@ -69,6 +69,109 @@ Data Entar ==> | StreamController | ==> Data sale
 * Para escuchar la salida de la información usaremos `Stream`, el cual estará transmitiendo todo lo que el StreamControler le indique
 * `Sink` y `Stram` son parte del StreamController
 
+
+---
+
+## PATRON BLOC
+
+Es una forma para manejar estado de la data de nuestra aplicación.Pero no es el único, hay otras maneras de poder separar la construccion de los widgets del estado de la data de nuestra aplicación,  por ejemplo:
+
+* ScopedModel
+* Patron Redux
+* Inherited Wiggets
+* Provider
+* y Otros ...
+
+### ¿que es y porqué usarlo?
+
+El proton bloc significa business logic component (lógica de negocio de componente) Este trata de tener centralizada la información de nuestra aplicación
+por ejemplo, tener información de los usuarios, productos, peliculas, Formulario.
+
+La idea del patron bloc es que nosotros podamos extraer lo que es la lógica del manejo de la información y centralizarla en ese bloc, el bloc se encargará de
+comunicar entre widgets. 
+
+Un block trabaja en base al Stream. Por ello se debe considerar 3 puntos importantes:
+
+* Trabaja únicamente con entradas y salidas de información
+* Para introducir información usaremos el sink y para la salida usaremos un stream 
+* Debemos cerrar el stream cuando ya no lo estamos utilizando 
+
+La idea principal de todo esto es que * Los widgets se encarguen únicamente de dibujarse y no de ocntrolar el estado de al información
+
+#### StreamControles
+hay dos tipos:
+* SingleSubscription: solo el widget que está escuchando puede seguir escuchando exclusivamente hasta que cierre la conexión, si otros quieren escuchar, deberan esperar
+* Broadcast : varios pueden escuchar
+
+Por defecto un stream controller es de SingleSubcription 
+
+un ejemplo:
+```
+class Mibloc{
+  StreamController<String> _streamController = new StreamController<String>();
+
+  //¿qué clase de información entrará al sink?
+  Sink<String> get inputSink => streamController.sink;
+
+  //¿Qué clase de información saldrá?
+  Stream<String> get outputStream => streamController.stream;
+
+  //transformado
+  Stream<String> get outputStream => streamController.stream.transform( algoParaTransformar);
+}
+```
+
+Cerrando un Stream
+```
+class MiBloc{
+  //...
+  //...
+  //...
+  //creamos el método que nos permitirá cerrar el stream, es una convensión pornerle dispose
+  Void dispose(){
+    _streamController?.close();
+  }
+
+}
+```
+
+Existe un Widget llamado StreamController que se encarga de dibujar un widget cada vez que se recibe información de un Stream
+Ejemplo en flutter:
+
+* un widgetA 
+```
+floatingActionButton(
+  onPress: ()=> MyBloc().inputSink.add("Hola mundo")
+)
+```
+* un WidgetB
+```
+StreamBuilder(
+  stream: MyBloc.outputStream,
+  builder: (BuildContext context, AsyncSnapshot snapshot){
+    return Container();
+  }
+)
+```
+Segun se vé, se va a construir un container cada vez que se activa el onPress. Las propiedades del Builder son:
+
+* context: Contiene la información del árbol de widgets y más ...
+* Snapshot: información referente al estado del Stream y la información que sale del Stream
+
+#### Lugar típico para llamar al dispose del Bloc
+Es en el pso del ciclo de vida de un Stateful Widget dispose();
+
+```
+@override
+void dispose(){
+  super.dispose();
+
+  miBloc.dispose();
+}
+```
+
+
+
 ---
 ## Eztensiones de VSCode
 
