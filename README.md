@@ -22,6 +22,13 @@ samples, guidance on mobile development, and a full API reference.
 Lo utilizamos para crear bordes redondeados (se usa como un container)
 
 
+### PageView
+sirve para hacer scrool de coleccionables,  por ello tiene como parémtro children: <Widget>[]
+
+
+
+
+
 ---
 ## packetes
 
@@ -51,7 +58,16 @@ Se tiene que registrar en el yaml e importar. más info [aquí](https://pub.dev/
 
 
 
+### Stream
+Como un rio estrecho, o un flujo de liquido,aire o gas. En el stream, la información solo fluye en un sentido, pero a esta se le puede conectar otra que tambien vaya en la misma dirección
 
+Data Entar ==> | StreamController | ==> Data sale
+
+* StreamController se encarga de procesar qué información entra y cuál sale
+* Dentro del Stream, también hay un StreamTransformer que se encarga de transformar la información
+* Para añadir información usaremos `Sink`
+* Para escuchar la salida de la información usaremos `Stream`, el cual estará transmitiendo todo lo que el StreamControler le indique
+* `Sink` y `Stram` son parte del StreamController
 
 ---
 ## Eztensiones de VSCode

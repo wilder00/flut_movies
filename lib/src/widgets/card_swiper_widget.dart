@@ -31,6 +31,7 @@ class CardSwiper extends StatelessWidget {
             ),
           );
         },
+        //le decimos cuantos elementos tendrá el carousel
         itemCount: peliculas.length,
         //quitamos paginations para quitar los puntos del carousel
         //pagination: new SwiperPagination(),
