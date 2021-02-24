@@ -12,6 +12,7 @@ class PeliculasProvider {
   String _language = "es-ES";
 
   int _popularesPage = 0;
+  bool _cargando = false;
 
   List<Pelicula> _populares = new List();
   //creando corriente de datos
@@ -54,7 +55,9 @@ class PeliculasProvider {
   }
 
   Future<List<Pelicula>> getPopulares() async {
-    //URL:https(<url>, <Path>, {<variables>})
+    if( _cargando) return [];
+    _cargando = true;
+    //URL.https(<url>, <Path>, {<variables>})
     _popularesPage++;
     final url = Uri.https(_url, "3/movie/popular", {
       'api_key': _apiKey,
