@@ -4,6 +4,7 @@ import 'dart:convert';
 
 // sin el as podríamos llamar a las funciones como get(), pero con ella hariamos http.get()
 import 'package:http/http.dart' as http;
+import 'package:peliculas/src/models/actores_model.dart';
 import 'package:peliculas/src/models/pelicula_model.dart';
 
 class PeliculasProvider {
@@ -71,5 +72,13 @@ class PeliculasProvider {
     popularesSink(_populares);
 
     return resp;
+  }
+
+  Future<List<Actor>> getCast(String peliId) async {
+    final url = Uri.https(_url, "3/movie/$peliId/credits",
+        {"api_key": _apiKey, "language": _language});
+    final resp = await http.get(url);
+    final decodeData = json.decode(resp.body);
+    final cast = new Cast.fromJsonList(decodeData['cast']);
   }
 }
