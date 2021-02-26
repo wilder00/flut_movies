@@ -56,7 +56,7 @@ class PeliculasProvider {
 
   Future<List<Pelicula>> getPopulares() async {
     if( _cargando) return [];
-    _cargando = true;
+    _cargando = false;
     //URL.https(<url>, <Path>, {<variables>})
     _popularesPage++;
     final url = Uri.https(_url, "3/movie/popular", {
