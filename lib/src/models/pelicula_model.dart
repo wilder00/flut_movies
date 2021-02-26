@@ -71,10 +71,12 @@ class Pelicula {
     }
     return 'https://image.tmdb.org/t/p/w500$posterPath';
   }
+
   getBackgorundImg() {
     if (posterPath == null) {
       return 'https://i0.wp.com/www.techjunkie.com/wp-content/uploads/2018/08/How-to-fix-the-Lenovo-webcam-not-working-issue1.jpg';
     }
+    print("https://image.tmdb.org/t/p/w500$backdropPath");
     return 'https://image.tmdb.org/t/p/w500$backdropPath';
   }
 }
