@@ -9,7 +9,8 @@ import 'package:peliculas/src/models/pelicula_model.dart';
 class PeliculasProvider {
   String _apiKey = "c6f33890e576ca843a27cb29e254686b";
   String _url = "api.themoviedb.org";
-  String _language = "es-ES";
+  //String _language = "es-ES";
+  String _language = "es-MX";
 
   int _popularesPage = 0;
   bool _cargando = false;
@@ -55,7 +56,7 @@ class PeliculasProvider {
   }
 
   Future<List<Pelicula>> getPopulares() async {
-    if( _cargando) return [];
+    if (_cargando) return [];
     _cargando = false;
     //URL.https(<url>, <Path>, {<variables>})
     _popularesPage++;
