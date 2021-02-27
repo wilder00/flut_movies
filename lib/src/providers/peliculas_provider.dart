@@ -80,5 +80,6 @@ class PeliculasProvider {
     final resp = await http.get(url);
     final decodeData = json.decode(resp.body);
     final cast = new Cast.fromJsonList(decodeData['cast']);
+    return cast.actores;
   }
 }
