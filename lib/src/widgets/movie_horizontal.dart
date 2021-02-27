@@ -33,7 +33,7 @@ class MovieHorizontal extends StatelessWidget {
         controller: _pageController,
         //es necesario que sepa cuántos items estan por renderizar
         itemCount: peliculas.length,
-        itemBuilder: (BuildContext context, int i){
+        itemBuilder: (BuildContext context, int i) {
           return _tarjeta(context, peliculas[i]);
         },
         //children: _tarjetas(context),
@@ -41,12 +41,15 @@ class MovieHorizontal extends StatelessWidget {
     );
   }
 
-  Widget _tarjeta(BuildContext context, Pelicula pelicula){
+  Widget _tarjeta(BuildContext context, Pelicula pelicula) {
     final tarjeta = Container(
-        margin: EdgeInsets.only(right: 15.0),
-        child: Column(
-          children: <Widget>[
-            ClipRRect(
+      margin: EdgeInsets.only(right: 15.0),
+      child: Column(
+        children: <Widget>[
+          Hero(
+            //el tag será y debe ser un identificador único para el widget hero
+            tag: pelicula.id,
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: FadeInImage(
                 image: NetworkImage(pelicula.getPosterImg()),
@@ -55,29 +58,28 @@ class MovieHorizontal extends StatelessWidget {
                 height: 152.0,
               ),
             ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Text(
-              pelicula.title,
-              //hace que parte del texto se ponga en ... cuando este excede de su contenido
-              //overflow: TextOverflow.ellipsis,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.caption,
-            ),
-          ],
-        ),
-      );
+          ),
+          SizedBox(
+            height: 5.0,
+          ),
+          Text(
+            pelicula.title,
+            //hace que parte del texto se ponga en ... cuando este excede de su contenido
+            //overflow: TextOverflow.ellipsis,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.caption,
+          ),
+        ],
+      ),
+    );
 
     return GestureDetector(
-      child: tarjeta,
-      onTap: (){
-        //navigator permite incluir arguments
-        Navigator.pushNamed(context, "detalle", arguments: pelicula);
-      }
-    );
+        child: tarjeta,
+        onTap: () {
+          //navigator permite incluir arguments
+          Navigator.pushNamed(context, "detalle", arguments: pelicula);
+        });
   }
-
 
   List<Widget> _tarjetas(BuildContext context) {
     return peliculas.map((pelicula) {
