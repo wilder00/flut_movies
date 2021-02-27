@@ -83,6 +83,7 @@ class PeliculasProvider {
     return cast.actores;
   }
 
+  int contador = 0;
   Future<List<Pelicula>> buscarPelicula(String query) async {
     //URL:https(<url>, <Path>, {<variables>})
     final url = Uri.https(_url, "3/search/movie", {
@@ -90,7 +91,9 @@ class PeliculasProvider {
       'language': _language,
       'query': query,
     });
-
+    ++contador;
+    print("$contador! se hizo la petición de: $query");
+    print(url);
     return await _procesarRespuesta(url);
   }
 }

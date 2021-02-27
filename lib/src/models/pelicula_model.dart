@@ -75,7 +75,7 @@ class Pelicula {
   }
 
   getBackgorundImg() {
-    if (posterPath == null) {
+    if (backdropPath == null) {
       return 'https://i0.wp.com/www.techjunkie.com/wp-content/uploads/2018/08/How-to-fix-the-Lenovo-webcam-not-working-issue1.jpg';
     }
     print("https://image.tmdb.org/t/p/w500$backdropPath");
