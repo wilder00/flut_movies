@@ -20,7 +20,10 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              //antes de usar el showSearch se debe crear el widget Delegate
+              //showSearch(context: null, delegate: null)
+            },
           ),
         ],
       ),
