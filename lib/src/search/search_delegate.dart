@@ -4,24 +4,43 @@ class DataSearch extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     // Las acciones de nuestro AppBar como los iconos con acciones para limpiar o cancelar
-    throw UnimplementedError();
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          //query es una variable interna del searchDelegate, todo lo que se escribe se guarda ahí, así que lo cambianos a string vacio
+          query = "";
+        },
+      )
+    ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
     // Es el icono que aparece a la izquierda
-    throw UnimplementedError();
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        //progress un valor de 0 a 1
+        progress: transitionAnimation,
+      ),
+      onPressed: () {
+        //método interno del search delegate
+        //el close: recibe de parámetro el contexto y el resultado que se quiere devolver
+        close(context, null);
+      },
+    );
   }
 
   @override
   Widget buildResults(BuildContext context) {
     // Crea los resultados que vamos a mostrar de la busqueda
-    throw UnimplementedError();
+    return Container();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     // Son las sugerencias que aparece cuando escribimos
-    throw UnimplementedError();
+    return Container();
   }
 }

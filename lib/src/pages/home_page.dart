@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/providers/peliculas_provider.dart';
+import 'package:peliculas/src/search/search_delegate.dart';
 import 'package:peliculas/src/widgets/card_swiper_widget.dart';
 import 'package:peliculas/src/widgets/movie_horizontal.dart';
 
@@ -22,7 +23,8 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.search),
             onPressed: () {
               //antes de usar el showSearch se debe crear el widget Delegate
-              //showSearch(context: null, delegate: null)
+              //los argumentos son, El context, el delegarte y el query="algo" para que pase con un texto precargado
+              showSearch(context: context, delegate: DataSearch());
             },
           ),
         ],
