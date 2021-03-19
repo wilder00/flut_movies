@@ -7,9 +7,12 @@ import 'package:http/http.dart' as http;
 import 'package:peliculas/src/models/actores_model.dart';
 import 'package:peliculas/src/models/pelicula_model.dart';
 
+//para obtener configuraciones de .env
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class PeliculasProvider {
-  String _apiKey = "c6f33890e576ca843a27cb29e254686b";
-  String _url = "api.themoviedb.org";
+  String _apiKey = env['API_KEY'];
+  String _url = env['SERVER_URL'];
   //String _language = "es-ES";
   String _language = "es-MX";
 
