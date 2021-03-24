@@ -18,7 +18,7 @@ if (flutterVersionCode == null) {
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+    flutterVersionName = '1.0.0'
 }
 
 apply plugin: 'com.android.application'
@@ -48,9 +48,10 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         /* Version code se debe aumentar cada vez que hacemos un despliegue a la play store */
-        versionCode flutterVersionCode.toInteger()
+        //versionCode flutterVersionCode.toInteger()
+        versionCode 2
         /* El versionName es lo que los usuarios ven. Recomendacion de usar versiones semanticos 1.0.0 [versiones mayores].[actualziaciones en una versión].[corrección de errores]*/
-        versionName flutterVersionName
+        versionName '1.0.1'
     }
 
     signingConfigs {

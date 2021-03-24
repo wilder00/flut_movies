@@ -137,3 +137,8 @@ lib/generated_plugin_registrant.dart
 
 # quitando el .env
 *.env
+
+#quitando el key.properties
+key.properties
+android/key.properties
+android/app/key.jks
